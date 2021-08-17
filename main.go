@@ -27,8 +27,8 @@ func main() {
 		port: os.Getenv("PORT"),
 	}
 	discoverAssets()
-	app.Get("/:user_id", func(ctx *fiber.Ctx) error {
-		user_id := ctx.Params("user_id")
+	app.Post("/", func(ctx *fiber.Ctx) error {
+		user_id := ctx.Get("user_id")
 		assetIds := md5.Sum([]byte(user_id))
 
 		duck := gg.NewContext(499, 600)
